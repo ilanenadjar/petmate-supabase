@@ -123,7 +123,7 @@ export default function ReviewSection({ adId }) {
               {t("writeReview")}
             </Button>
           ) : (
-            <Button variant="ghost" size="sm" className="text-slate-400 text-xs" onClick={() => base44.auth.redirectToLogin()}>
+            <Button variant="ghost" size="sm" className="text-slate-400 text-xs" onClick={() => window.location.href = "/login"}>
               {t("loginToReview")}
             </Button>
           )}

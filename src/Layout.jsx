@@ -5,6 +5,7 @@ import FlashAlertBanner from "@/components/flash/FlashAlertBanner";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { base44 } from "@/api/base44Client";
+import { supabase } from "@/api/supabaseClient";
 import { LanguageProvider, useLang } from "@/components/i18n/LanguageContext";
 import UserCreditsWidget from "@/components/pricing/UserCreditsWidget";
 
@@ -119,7 +120,7 @@ function AppLayout({ children, currentPageName }) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => base44.auth.logout()}
+                  onClick={() => supabase.auth.signOut().then(() => { setUser(null); setIsAdmin(false); })}
                   className="rounded-xl text-slate-400 hover:text-slate-600"
                   title={t("logout")}
                 >
@@ -128,7 +129,7 @@ function AppLayout({ children, currentPageName }) {
               </div>
             ) : (
               <Button
-                onClick={() => base44.auth.redirectToLogin()}
+                onClick={() => window.location.href = "/login"}
                 className="hidden md:flex bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm h-9"
               >
                 {t("login")}
@@ -172,11 +173,11 @@ function AppLayout({ children, currentPageName }) {
               )}
               <div className="border-t border-slate-100 pt-3 mt-3">
                 {user ? (
-                  <Button variant="ghost" className="w-full justify-start rounded-xl text-sm h-12 text-red-500" onClick={() => base44.auth.logout()}>
+                  <Button variant="ghost" className="w-full justify-start rounded-xl text-sm h-12 text-red-500" onClick={() => supabase.auth.signOut().then(() => { setUser(null); setIsAdmin(false); })}>
                     <LogOut className="w-4 h-4 mr-3" /> {t("logout")}
                   </Button>
                 ) : (
-                  <Button className="w-full bg-slate-900 rounded-xl h-12" onClick={() => base44.auth.redirectToLogin()}>
+                  <Button className="w-full bg-slate-900 rounded-xl h-12" onClick={() => window.location.href = "/login"}>
                     {t("login")}
                   </Button>
                 )}

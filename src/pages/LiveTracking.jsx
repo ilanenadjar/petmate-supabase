@@ -54,7 +54,7 @@ export default function LiveTracking() {
           <p className="font-semibold text-slate-700">Sign in to track a walk</p>
           <Button
             className="bg-orange-500 hover:bg-orange-600 text-white rounded-xl"
-            onClick={() => base44.auth.redirectToLogin(window.location.href)}
+            onClick={() => window.location.href = "/login"}
           >
             Sign in
           </Button>
