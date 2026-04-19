@@ -1,0 +1,40 @@
+{
+  "name": "FlashSitter",
+  "type": "object",
+  "properties": {
+    "sitter_email": {
+      "type": "string",
+      "description": "Email of the sitter in flash mode"
+    },
+    "sitter_name": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "city": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string",
+      "description": "Optional message from the sitter"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the flash availability expires (default 2h)"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "sitter_email",
+    "latitude",
+    "longitude"
+  ]
+}

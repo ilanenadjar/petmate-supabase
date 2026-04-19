@@ -1,0 +1,74 @@
+{
+  "name": "WalkSession",
+  "type": "object",
+  "properties": {
+    "ad_id": {
+      "type": "string",
+      "description": "ID of the PetAd this session is linked to"
+    },
+    "sitter_email": {
+      "type": "string",
+      "description": "Email of the pet-sitter"
+    },
+    "owner_email": {
+      "type": "string",
+      "description": "Email of the pet owner"
+    },
+    "pet_name": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "waiting",
+        "active",
+        "completed",
+        "cancelled"
+      ],
+      "default": "waiting"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "checkin_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when geofence check-in was validated"
+    },
+    "checkin_distance_m": {
+      "type": "number",
+      "description": "Measured distance in metres at check-in"
+    },
+    "owner_lat": {
+      "type": "number",
+      "description": "Latitude of the owner's address for geofence validation"
+    },
+    "owner_lng": {
+      "type": "number",
+      "description": "Longitude of the owner's address for geofence validation"
+    },
+    "gps_points": {
+      "type": "array",
+      "description": "Array of { lat, lng, ts } GPS breadcrumbs recorded every 10s",
+      "items": {
+        "type": "object"
+      }
+    },
+    "total_distance_km": {
+      "type": "number",
+      "description": "Calculated total distance in kilometres"
+    },
+    "share_token": {
+      "type": "string",
+      "description": "Public token for owner to view live tracking without login"
+    }
+  },
+  "required": [
+    "sitter_email"
+  ]
+}

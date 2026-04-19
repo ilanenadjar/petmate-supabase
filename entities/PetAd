@@ -1,0 +1,109 @@
+{
+  "name": "PetAd",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the ad"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description"
+    },
+    "ad_type": {
+      "type": "string",
+      "enum": [
+        "request",
+        "offer"
+      ]
+    },
+    "service_type": {
+      "type": "string",
+      "enum": [
+        "walking",
+        "sitting",
+        "boarding",
+        "daycare"
+      ]
+    },
+    "pet_type": {
+      "type": "string",
+      "enum": [
+        "dog",
+        "cat",
+        "bird",
+        "rabbit",
+        "other"
+      ]
+    },
+    "pet_name": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "neighborhood": {
+      "type": "string"
+    },
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "price": {
+      "type": "number"
+    },
+    "price_unit": {
+      "type": "string",
+      "enum": [
+        "per_hour",
+        "per_day",
+        "per_walk",
+        "negotiable"
+      ]
+    },
+    "date_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_to": {
+      "type": "string",
+      "format": "date"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "contact_name": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Main photo (kept for backward compat)"
+    },
+    "photos": {
+      "type": "array",
+      "description": "Multiple photos of the pet",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "paused",
+        "completed",
+        "cancelled"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "title",
+    "ad_type",
+    "service_type",
+    "pet_type",
+    "city"
+  ]
+}
