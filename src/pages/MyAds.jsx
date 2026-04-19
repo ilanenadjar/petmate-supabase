@@ -117,7 +117,7 @@ export default function MyAds() {
                           <div>
                             <h3 className="font-semibold text-slate-900 truncate">{ad.title}</h3>
                             <p className="text-sm text-slate-500 mt-0.5">
-                              {ad.city} · {format(new Date(ad.created_date), "d MMM yyyy", { locale })}
+                              {ad.city} · {ad.created_at ? format(new Date(ad.created_at), "d MMM yyyy", { locale }) : ""}
                             </p>
                           </div>
                           <Badge className={`${statusColorMap[ad.status]} border-0 text-xs`}>

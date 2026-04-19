@@ -64,9 +64,9 @@ export function smartMatch(userCoords, ads, ratingMap = {}, options = {}) {
       const distanceKm = haversineKm(uLat, uLon, ad.latitude, ad.longitude);
       const avgRating = ratingMap[ad.id] ?? 0;
       // Recency: days since creation (capped at 90)
-      const agedays = ad.created_date
+      const agedays = ad.created_at
         ? Math.min(
-            (Date.now() - new Date(ad.created_date)) / 86400000,
+            (Date.now() - new Date(ad.created_at)) / 86400000,
             90
           )
         : 90;

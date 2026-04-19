@@ -193,7 +193,7 @@ export default function BackOffice() {
                             {order.status === "confirmed" ? "Confirmée" : order.status === "pending" ? "En attente" : "Annulée"}
                           </Badge>
                         </TableCell>
-                        <TableCell className="text-sm text-slate-500">{format(new Date(order.created_date), "d/MM/yy", { locale: fr })}</TableCell>
+                        <TableCell className="text-sm text-slate-500">{order.created_at ? format(new Date(order.created_at), "d/MM/yy", { locale: fr }) : ""}</TableCell>
                         <TableCell className="text-right">
                           <div className="flex gap-1 justify-end">
                             {order.status === "pending" && (
@@ -311,7 +311,7 @@ export default function BackOffice() {
                       </TableCell>
                       <TableCell className="text-sm text-slate-500 truncate max-w-[150px]">{ad.created_by}</TableCell>
                       <TableCell className="text-sm text-slate-500">
-                        {format(new Date(ad.created_date), "d/MM/yy", { locale: fr })}
+                        {ad.created_at ? format(new Date(ad.created_at), "d/MM/yy", { locale: fr }) : ""}
                       </TableCell>
                       <TableCell className="text-right">
                         <div className="flex gap-1 justify-end">

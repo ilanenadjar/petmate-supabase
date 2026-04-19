@@ -28,7 +28,7 @@ function ReviewCard({ review, locale }) {
           <div>
             <span className="font-semibold text-slate-900">{review.reviewer_name || "Anonyme"}</span>
             <span className="text-xs text-slate-400 ml-2">
-              {format(new Date(review.created_date), "d MMM yyyy", { locale })}
+              {review.created_at ? format(new Date(review.created_at), "d MMM yyyy", { locale }) : ""}
             </span>
           </div>
           <StarRating value={review.rating} readonly size="sm" />
