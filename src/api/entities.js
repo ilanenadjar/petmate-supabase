@@ -35,13 +35,14 @@ function createEntity(tableName) {
       }
 
       // Apply ordering: "-created_date" → order by created_date DESC
-      if (orderBy) {
-        const descending = orderBy.startsWith('-');
-        const column = descending ? orderBy.slice(1) : orderBy;
-        // Map base44 "created_date" to Supabase "created_at" if needed
-        const col = column === 'created_date' ? 'created_at' : column;
-        query = query.order(col, { ascending: !descending });
-      }
+    if (orderBy) {
+      const isDesc = orderBy.startsWith('-');
+      // On nettoie le nom de la colonne et on remplace created_date par created_at
+      let column = isDesc ? orderBy.substring(1) : orderBy;
+      if (column === 'created_date') column = 'created_at'; 
+      
+      query = query.order(column, { ascending: !isDesc });
+    }
 
       if (limit) {
         query = query.limit(limit);
