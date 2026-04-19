@@ -101,10 +101,13 @@ function createEntity(tableName) {
     /**
      * Subscribe to real-time changes. Mirrors: base44.entities.X.subscribe(callback)
      * Returns an unsubscribe function.
+     * Uses a unique channel name per call to avoid conflicts with React StrictMode
+     * double-mounting or multiple subscribers on the same table.
      */
     subscribe(callback) {
+      const channelName = `realtime:${tableName}:${Math.random().toString(36).slice(2)}`;
       const channel = supabase
-        .channel(`realtime:${tableName}`)
+        .channel(channelName)
         .on(
           'postgres_changes',
           { event: '*', schema: 'public', table: tableName },
